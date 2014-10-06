@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="connectorModule"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WMB Stub JRE"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.ibm.etools.mbstub.runtime.runtimeTarget.v61/com.ibm.ws.ast.st.runtime.v61.mb"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry exported="true" kind="lib" path="connectorModule/wbiBiDi.jar" sourcepath="connectorModule/wbiBiDi.jar"/>
+	<classpathentry exported="true" kind="lib" path="connectorModule/commonj.connector.jar" sourcepath="connectorModule/commonj.connector.jar"/>
+	<classpathentry exported="true" kind="lib" path="connectorModule/CWYAP_SAPAdapter.jar" sourcepath="connectorModule/CWYAP_SAPAdapter.jar"/>
+	<classpathentry exported="true" kind="lib" path="connectorModule/DESPI.jar" sourcepath="connectorModule/DESPI.jar"/>
+	<classpathentry exported="true" kind="lib" path="connectorModule/CWYBS_AdapterFoundation.jar" sourcepath="connectorModule/CWYBS_AdapterFoundation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/IBM_ADMIN/Desktop/dummy data/sapjco3.jar" sourcepath="C:/Users/IBM_ADMIN/Desktop/dummy data/sapjco3.jar"/>
+	<classpathentry kind="con" path="com.ibm.etools.mft.uri.classpath.MBProjectReference"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

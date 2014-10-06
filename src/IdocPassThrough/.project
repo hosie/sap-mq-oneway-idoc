@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>IdocPassThrough</name>
+	<comment></comment>
+	<projects>
+		<project>IDOCPassThrough_SAPAdapter_Tx1</project>
+		<project>IdocPassThroughFlow</project>
+		<project>IdocPassThroughFlowJava</project>
+		<project>IdocPassThroughMessageSet</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.ibm.etools.mft.pattern.capture.PatternBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.ibm.etools.mft.patternauthoringnature</nature>
+	</natures>
+</projectDescription>

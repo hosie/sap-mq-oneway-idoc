@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurableservice 
+RFCTraceLevel="1" 
+RFCTraceOn="false" 
+RFCTracePath="" 
+applicationServerHost="ibm.co.uk" 
+client="100" 
+csName="idocpassthrough.inadapter" 
+csType="SAPConnection" 
+gatewayHost="0.0.0.0" 
+gatewayService="sapgw00" 
+numberOfListeners="1" 
+rfcProgramID="htythr8ueuh" 
+systemNumber="00"/>

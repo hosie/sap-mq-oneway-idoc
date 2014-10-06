@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emd:discoveryService xmlns:emd="commonj.connector"
+	xmlns:j2ee="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
+	<j2ee:description>IBM WebSphere Adapter for SAP Software</j2ee:description>
+	<j2ee:description xml:lang="es">IBM WebSphere Adapter para software SAP</j2ee:description>
+	<j2ee:description xml:lang="pt">IBM WebSphere Adapter para SAP Software</j2ee:description>
+	<j2ee:display-name>IBM WebSphere Adapter for SAP Software</j2ee:display-name>
+	<j2ee:display-name xml:lang="es">IBM WebSphere Adapter para software SAP</j2ee:display-name>
+	<j2ee:display-name xml:lang="pt">IBM WebSphere Adapter para SAP Software</j2ee:display-name>
+	<emd:vendor-name xsi:type="j2ee:xsdStringType">IBM</emd:vendor-name>
+	<emd:version xsi:type="j2ee:xsdStringType">7.0.0.0</emd:version>
+	<emd:spec-version>1.2</emd:spec-version>
+	<emd:discoveryService-class
+		xsi:type="j2ee:fully-qualified-classType">
+		com.ibm.j2ca.sap.emd.discovery.SAPMetadataDiscovery
+	</emd:discoveryService-class>
+	<emd:metadataEdit-class xsi:type="j2ee:fully-qualified-classType">
+		com.ibm.j2ca.sap.emd.discovery.SAPMetadataEdit
+	</emd:metadataEdit-class>
+	<emd:adapterConfiguration-class xsi:type="j2ee:fully-qualified-classType">
+		com.ibm.j2ca.sap.emd.discovery.SAPAdapterConfiguration
+	</emd:adapterConfiguration-class>
+	<emd:application-specific-schema>
+		<j2ee:description>SAP ASI schema</j2ee:description>
+		<j2ee:display-name>SAP Application Specific Information Schema</j2ee:display-name>
+		<emd:asiNSURI>
+			http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata
+		</emd:asiNSURI>
+		<emd:asiSchemaLocation>SapBusinessObjectMetadata.xsd</emd:asiSchemaLocation>
+	</emd:application-specific-schema>
+</emd:discoveryService>

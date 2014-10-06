@@ -1,0 +1,4 @@
+Name: com/ibm/j2ca/sap
+Implementation-Title: "IBM WebSphere Adapter for SAP Software"
+Implementation-Version: 7.0.0.0
+Implementation-Vendor: "International Business Machines Corporation"

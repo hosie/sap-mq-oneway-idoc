@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sapasi="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata" elementFormDefault="qualified" targetNamespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/sap/metadata">
+	<element name="sapBAPIBusinessObjectTypeMetadata" type="sapasi:sapBAPIBusinessObjectTypeMetadata">
+		<annotation>
+			<appinfo source="commonj.connector.asi">
+				<asi:annotationType xmlns:asi="commonj.connector.asi" annotationKind="complexType" annotationScope="global"/>
+			</appinfo>
+		</annotation>
+	</element>
+	<element name="sapBAPIPropertyTypeMetadata" type="sapasi:sapBAPIPropertyTypeMetadata">
+		<annotation>
+			<appinfo source="commonj.connector.asi">
+				<asi:annotationType xmlns:asi="commonj.connector.asi" annotationKind="element" annotationScope="local"/>
+			</appinfo>
+		</annotation>
+	</element>
+
+	<element name="sapAEPBusinessObjectTypeMetadata" type="sapasi:sapAEPBusinessObjectTypeMetadata">
+		<annotation>
+			<appinfo source="commonj.connector.asi">
+				<asi:annotationType xmlns:asi="commonj.connector.asi" annotationKind="complexType" annotationScope="global"/>
+			</appinfo>
+		</annotation>
+	</element>
+	<element name="sapAEPPropertyTypeMetadata" type="sapasi:sapAEPPropertyTypeMetadata">
+		<annotation>
+			<appinfo source="commonj.connector.asi">
+				<asi:annotationType xmlns:asi="commonj.connector.asi" annotationKind="element" annotationScope="local"/>
+			</appinfo>
+		</annotation>
+	</element>
+	<element name="sapALEBusinessObjectTypeMetadata" type="sapasi:sapALEBusinessObjectTypeMetadata">
+		<annotation>
+			<appinfo source="commonj.connector.asi">
+				<asi:annotationType xmlns:asi="commonj.connector.asi" annotationKind="complexType" annotationScope="global"/>
+			</appinfo>
+		</annotation>
+	</element>
+
+	<element name="sapALEPropertyTypeMetadata" type="sapasi:sapALEPropertyTypeMetadata">
+		<annotation>
+			<appinfo source="commonj.connector.asi">
+				<asi:annotationType xmlns:asi="commonj.connector.asi" annotationKind="element" annotationScope="local"/>
+			</appinfo>
+		</annotation>
+	</element>
+	<element name="sapSQIBusinessObjectTypeMetadata" type="sapasi:sapSQIBusinessObjectTypeMetadata">
+		<annotation>
+			<appinfo source="commonj.connector.asi">
+				<asi:annotationType xmlns:asi="commonj.connector.asi" annotationKind="complexType" annotationScope="global"/>
+			</appinfo>
+		</annotation>
+	</element>
+
+	<element name="sapSQIPropertyTypeMetadata" type="sapasi:sapSQIPropertyTypeMetadata">
+		<annotation>
+			<appinfo source="commonj.connector.asi">
+				<asi:annotationType xmlns:asi="commonj.connector.asi" annotationKind="element" annotationScope="local"/>
+			</appinfo>
+		</annotation>
+	</element>
+	<!-- IBM BIDI Append Start -->
+
+	<simpleType name="OrderingScheme">
+		<restriction base="string">
+			<enumeration value=""/>		
+			<enumeration value="implicit"/>
+			<enumeration value="visual"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="Orientation">
+		<restriction base="string">
+			<enumeration value=""/>				
+			<enumeration value="LTR"/>
+			<enumeration value="RTL"/>
+			<enumeration value="contextual_LTR"/>
+			<enumeration value="contextual_RTL"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SpecString">
+		<restriction base="string">
+			<enumeration value="NORMAL_STRING"/>		
+			<enumeration value="SAP_WHERE_CLAUSE"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TrueFalse">
+		<restriction base="string">
+			<enumeration value=""/>				
+			<enumeration value="true"/>
+			<enumeration value="false"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NumeralShapes">
+		<restriction base="string">
+			<enumeration value=""/>				
+			<enumeration value="nominal"/>
+			<enumeration value="national"/>
+			<enumeration value="contextual"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextShapes">
+		<restriction base="string">
+			<enumeration value=""/>				
+			<enumeration value="nominal"/>
+			<enumeration value="shaped"/>
+			<enumeration value="initial"/>
+			<enumeration value="middle"/>
+			<enumeration value="final"/>
+			<enumeration value="isolated"/>
+		</restriction>
+	</simpleType>
+
+
+
+	<complexType name="Bi_DirectionStringTD">
+		<sequence minOccurs="1" maxOccurs="1">
+			<element name="orderingScheme" type="sapasi:OrderingScheme"/>
+			<element name="orientation" type="sapasi:Orientation"/>
+			<element name="symmetricSwapping" type="sapasi:TrueFalse"/>
+			<element name="numeralShapes" type="sapasi:NumeralShapes"/>
+			<element name="textShape" type="sapasi:TextShapes"/>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="BiDiContext">
+		<sequence minOccurs="0" maxOccurs="1">
+ 			<element name="BiDiEIS" type="sapasi:Bi_DirectionStringTD" minOccurs="0"/>
+ 			<element name="BiDiMetadata" type="sapasi:Bi_DirectionStringTD" minOccurs="0"/>
+ 			<element name="BiDiSkip" type="sapasi:TrueFalse" minOccurs="0"/>
+ 		        <element name="BiDiSpecFormat" type="sapasi:SpecString" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<!-- IBM BIDI Append END -->
+
+	<!--  AEP ASI Metadata  -->
+	<complexType name="sapAEPBusinessObjectTypeMetadata">
+		<sequence>
+			<element name="Type" type="string"/>
+			<element name="SegmentName" type="string" minOccurs="0" maxOccurs="1"/>			
+			<element name="IDocName" type="string" minOccurs="0" maxOccurs="1"/>			
+			<element name="Operation" type="sapasi:sapAEPOperationTypeMetadata" minOccurs="0" maxOccurs="unbounded"/>
+			
+			<!-- IBM BIDI Append cheged for okemo changed sapasi:BiDiContext to sapasi:Bi_DirectionStringTD-->
+			<element name="BiDiContext" type="sapasi:Bi_DirectionStringTD" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="sapBAPIBusinessObjectTypeMetadata">
+		<sequence>
+			<element name="Type" type="string"/>
+			<element name="Operation" type="sapasi:sapBAPIOperationTypeMetadata" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ObjectName" type="string" minOccurs="0" maxOccurs="1"/>						
+			<element name="ErrorConfiguration" type="sapasi:sapRFCErrorConfigurationMetadata" minOccurs="0" maxOccurs="unbounded"/> 
+				
+			<!-- IBM BIDI Append cheged for okemo changed sapasi:BiDiContext to sapasi:Bi_DirectionStringTD-->
+			<element name="BiDiContext" type="sapasi:Bi_DirectionStringTD" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="sapRFCErrorConfigurationMetadata">
+		<sequence maxOccurs="1" minOccurs="0">
+			<element name="ErrorParameter" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="ErrorCode" minOccurs="0" maxOccurs="unbounded" type="string"/>
+			<element name="ErrorDetail" minOccurs="0" maxOccurs="1" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="sapAEPOperationTypeMetadata">
+		<sequence maxOccurs="1" minOccurs="0">
+			<element name="Name" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="MethodName" minOccurs="0" maxOccurs="unbounded" type="string"/>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="sapBAPIOperationTypeMetadata">
+		<sequence maxOccurs="1" minOccurs="0">
+			<element name="Name" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="MethodName" minOccurs="0" maxOccurs="unbounded" type="string"/>
+		</sequence>
+	</complexType>
+	<complexType name="sapBAPIPropertyTypeMetadata">
+		<sequence minOccurs="0" maxOccurs="1">
+			<element name="FieldName" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="FieldType" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="PrimaryKey" type="boolean" minOccurs="0" maxOccurs="1"/>
+			<element name="MaxLength" type="int" minOccurs="0" maxOccurs="1"/>	
+			<element name="ForeignKey" type="string" minOccurs="0" maxOccurs="1"/>				
+			<element name="Description" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="DecimalPlaces" type="int" minOccurs="0" maxOccurs="1"/>					
+			<element name="ParameterType" minOccurs="0" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="IN"/>
+						<enumeration value="OUT"/>
+						<enumeration value="INOUT"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<!-- IBM BIDI Append removed no more property level bidi context for okemo-->
+			<!--&lt;element name=&quot;BiDiContext&quot; type=&quot;sapasi:BiDiContext&quot; minOccurs=&quot;0&quot; /&gt;-->
+
+		</sequence>
+	</complexType>
+
+
+
+	<complexType name="sapAEPPropertyTypeMetadata">
+		<sequence minOccurs="0" maxOccurs="1">
+			<element name="FieldName" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="FieldType" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="PrimaryKey" type="boolean" minOccurs="0" maxOccurs="1"/>
+			<element name="MaxLength" type="int" minOccurs="0" maxOccurs="1"/>	
+			<element name="ForeignKey" type="string" minOccurs="0" maxOccurs="1"/>				
+			<element name="ForeignBOKeyRef" type="string" minOccurs="0" maxOccurs="1"/>
+			<!-- IBM BIDI Append removed no more property level bidi context for okemo-->
+			<!--&lt;element name=&quot;BiDiContext&quot; type=&quot;sapasi:BiDiContext&quot; minOccurs=&quot;0&quot; /&gt;-->
+
+		</sequence>
+	</complexType>
+
+
+	<!-- The ALE ASI Metadata -->
+	<complexType name="sapALEBusinessObjectTypeMetadata">
+		<sequence minOccurs="0" maxOccurs="1">
+		<!-- IBM BIDI Append Changed for okemo -->
+			<element name="BiDiContext" type="sapasi:Bi_DirectionStringTD" minOccurs="0"/>
+			<element name="Type" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="SplitIDocPacket" type="string" minOccurs="0" maxOccurs="1"/>				
+			<element name="Operation" type="sapasi:sapALEOperationTypeMetadata" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ForeignKey" type="string" minOccurs="0" maxOccurs="1"/>
+				
+		</sequence>
+	</complexType>
+
+	<complexType name="sapALEOperationTypeMetadata">
+		<sequence minOccurs="0" maxOccurs="1">
+			<element name="Name" type="string" minOccurs="0" maxOccurs="1"/>
+
+			<element name="sapALEOperationMetadata" type="sapasi:sapALEOperationMetadataWrapper" minOccurs="0" maxOccurs="unbounded"/>
+			<!--
+				&lt;element name=&quot;sapALEVerbResolutionMetadata&quot; type=&quot;sapasi:sapALEOperationMetadataWrapper&quot;
+				minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; /&gt;
+			-->
+		</sequence>
+	</complexType>
+
+	<complexType name="sapALEOperationMetadataWrapper">
+		<sequence minOccurs="0" maxOccurs="1">
+			<element name="MsgType" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="MsgCode" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="MsgFunction" type="string" minOccurs="0" maxOccurs="1"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="sapALEPropertyTypeMetadata">
+		<sequence minOccurs="0" maxOccurs="1">
+		<!-- IBM BIDI Append , for Okemo removed property type metadata .-->
+			<!--&lt;element name=&quot;BiDiContext&quot; type=&quot;sapasi:Bi_DirectionStringTD&quot;
+				minOccurs=&quot;0&quot; /&gt;-->
+			<element name="FieldName" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="SegmentHierarchy" type="int" minOccurs="0" maxOccurs="1"/>
+			<element name="OffSet" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="PrimaryKey" type="boolean" minOccurs="0" maxOccurs="1"/>
+			<element name="Delimiter" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="MaxLength" type="int" minOccurs="0" maxOccurs="1"/>				
+			<element name="ForeignBOKeyRef" type="string" minOccurs="0" maxOccurs="1"/>
+           	      <element name="PossibleValue" type="string" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+	</complexType>
+
+
+<!--  SQI Metadata  -->
+	<complexType name="sapSQIBusinessObjectTypeMetadata">
+		<sequence minOccurs="0" maxOccurs="1">
+		<!-- IBM BIDI Append , changed for Okemo -->
+			<element name="BiDiContext" type="sapasi:Bi_DirectionStringTD" minOccurs="0"/>
+			<element name="Type" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="TableName" type="string" minOccurs="0" maxOccurs="1"/>
+<!--CR 91053: for backward compatibility issue, adding dataDelimiter field-->
+			<element name="DataDelimiter" type="string" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+
+
+	<complexType name="sapSQIPropertyTypeMetadata">
+		<sequence minOccurs="0" maxOccurs="1">
+		<!-- IBM BIDI Append Removed property type bidi for Okemo -->
+			<!--&lt;element name=&quot;BiDiContext&quot; type=&quot;sapasi:BiDiContext&quot;
+				minOccurs=&quot;0&quot; /&gt;-->
+			<element name="ColumnName" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="PrimaryKey" type="boolean" minOccurs="0" maxOccurs="1"/>
+			<element name="ForeignKey" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="MaxLength" type="int" minOccurs="0" maxOccurs="1"/>				
+		</sequence>
+	</complexType>
+
+
+
+</schema>

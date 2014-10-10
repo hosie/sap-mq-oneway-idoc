@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Tasks to complete after generating the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern."/>
+	<meta name="description" content=""/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Tasks to complete after generating the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.eis.sap.idocfanout.after">
+	<h1 class="topictitle1">Tasks to complete after generating the <span>Data distribution SAP to WebSphere MQ: one-way (for IDoc)</span> pattern</h1>
+	<p class="shortdesc">Tasks that you must complete after you have generated the pattern.</p>
+	<ol>
+		<li>
+		Develop the message flows to process the IDocs and create any queues that are required to transport 
+		messages between the IDoc Routing flow and the IDoc processing flows.
+		</li>
+		<li>
+		Store your SAP user name and password by using the <span class="uicontrol">mqsisetdbparms</span> command.
+		</li>
+		<li>
+	  	Deploy the configurable service that is created by the pattern, by dragging the configurable service
+	  	file onto your broker in Integration Explorer. Restart the broker.
+	  	</li>
+	  	<li>Configure the runtime with SAP JCo Libraries. To deploy message flows with SAP nodes, you must configure the runtime with the prerequisite SAP JCo
+Libraries. These libraries are used by the underlying SAP adapter
+component to establish connections with the SAP system.
+		<p>You must run the following <b>mqsichangeproperties</b> commands from a
+command environment to set the location of the directories that contain
+the SAP JCo Libraries. </p>
+			<ol>
+  		<li>Run the following commands, changing the SAP client directory to
+			match your platform and your choice of location:
+    <pre>mqsichangeproperties  <var>broker_name</var> -c EISProviders -o SAP -n jarsURL -v <var>sap_client_directory</var></pre>
+    <pre>mqsichangeproperties <var>broker_name</var> -c EISProviders -o SAP -n nativeLibs -v <var>sap_client_directory</var></pre>
+         where <var>broker_name</var> is your broker's name (for example, 
+        	<span class="filepath">IB9NODE</span>) and <var>sap_client_directory</var> is the path to your 
+        	SAP client directory (for example, <span class="filepath">C:\SAP_JARS</span>).
+  		</li>
+  		<li>To verify that the properties are set up correctly, run the
+			following command:
+    <pre>mqsireportproperties <var>broker_name</var> -c EISProviders -o SAP -r</pre>
+  		</li>
+ 		 <li>Stop and restart the broker by using the following commands:
+    <pre>mqsistop <var>broker_name</var></pre>
+    <pre>mqsistart <var>broker_name</var></pre>
+  		</li>
+	</ol>
+	    </li>	  
+	    <li>Create a broker archive (BAR) file that contains the message flow, message set, and adapter that 
+	    is referenced by the flow. In the Broker Archive editor, you must select the <span class="uicontrol">Compile and in-line resources</span> option before you build the BAR file.
+	    </li>
+	    <li>Deploy the message set and adapter that is referenced by the flow.
+	    </li>
+	    <li>
+	    Configure the broker archive file. Further configuration of the message flow in the broker archive 
+	    file is not required before you deploy the message flows for your Data distribution SAP to WebSphere 
+	    MQ: one-way (for IDoc) pattern instance, but you might want to review some of the default options 
+	    and configure changes for your environment.
+	    <ol>
+	  		<li>Optional: Use the <span class="msobjprop">LoggingOn</span> user-defined property to select 
+	  		whether logging is on or off for the message flow.</li>
+	  		<li>Optional: Use the <span class="msobjprop">ErrorLoggingOn</span> user-defined property to 
+	  		select whether error messages are generated.</li>
+	  		<li>Optional: You can also change any of the configurable properties in the broker archive, 
+	  		for example, properties for security or for creating additional instances. You must ensure that 
+	  		any values that you change do not impact the behavior of the pattern instance.</li>
+	    </ol>
+	    </li>
+	  	</ol>
+	<p>Ensure that you have a connection to the SAP backend before you deploy this pattern. If you do not have a 
+	connection, the SAP adapter will raise an exception.</p>
+	<p>
+		<a href="overview.htm#anchor1" title="Back">Back to the Data distribution SAP to WebSphere MQ: 
+		one-way (for IDoc) pattern specification</a>
+	</p>
+</body>
+</html>

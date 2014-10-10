@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Error messaging in the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Error subflow for the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.eis.sap.idocfanoutError">
+<div><h1 class="topictitle1">Error subflow for the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern</h1>
+<p class="shortdesc">If errors are caught while processing the IDoc Routing message flow, the Error subflow 
+is called.</p>
+<p>If you configure the pattern instance to enable error messages, a message is written to the error queue. 
+The following actions are taken by the Error subflow:</p>
+	<ul>
+	<li>
+	If the Error subflow is in the IDoc Routing flow, the message that is written to the error queue is 
+	a standard XML message, as shown by the following example:
+	<pre>&lt;Error&gt;&lt;Status&gt;-1&lt;/Status&gt;&lt;Text&gt;Failed to send message&lt;/Text&gt;&lt;/Error&gt;</pre>
+	</li>
+	<li>
+	The exception list is added to the message.
+	</li>
+	<li>
+	If you have configured the pattern parameters to include error messages, the code to write error messages 
+	is included in the Error subflow.
+	</li>
+	<li>
+	Error logging is controlled by the user-defined property: <span class="msobjprop">ErrorLoggingOn</span>. 
+	If this property is selected, an error message is written to the error queue.
+	<p>The error message contains the broker name, flow name, and a time stamp. The exception list is 
+	summarized, and the bitstream content of the message that is causing the error is added as a BLOB.</p>
+	</li>
+	</ul>
+<p>If an error occurs, the Error flow produces the exception again so that the SAPInput node rolls back the 
+transaction in SAP.</p>
+<p>Messages are backed out if error messages are not selected in the pattern configuration.</p></div>
+
+<a href="overview.htm#anchor1" title="Back">Back to the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern specification</a>
+</body>
+</html>

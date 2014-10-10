@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="IDoc processing message flows"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>IDoc processing message flows</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.eis.sap.idocfanoutFan Out">
+<div class="section">
+	<h1 class="topictitle1">IDoc processing message flows</h1>
+	<p class="shortdesc">
+	The pattern does not generate the message flows that process the actual IDocs. For each message flow 
+	complete the following steps: 
+	</p>
+	<ol>
+		<li>
+		Run the Adapter Connection wizard and find the IDoc that you want to process with the message flow.  
+		The wizard generates a message set that describes the model for your chosen IDoc.
+		</li>
+		<li>
+		Create a message flow and add an MQInput node. Set the <span class="msobjprop">Queue name</span>
+		property to match the queue to which the IDoc is routed by the IDoc Routing flow. Select 
+		<span class="uicontrol">DataObject</span> as the message domain. Select the message set that was 
+		generated in the previous step. Select <span class="uicontrol">SAP ALE IDoc</span> as the message 
+		format.
+		</li>
+		<li>
+		Develop the remainder of the message flow. The incoming IDoc exits the Out terminal of the MQInput 
+		node in the same format as if it is the Out terminal of an SAPInput node but with the addition of an 
+		MQMD header.
+		</li>
+	</ol>
+</div>
+<a href="overview.htm#anchor1" title="Back">Back to the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern specification</a>
+</body>
+</html>

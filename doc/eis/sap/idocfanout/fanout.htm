@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="IDoc Routing flow for the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>IDoc Routing flow for the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.eis.sap.idocfanoutFan Out">
+<div class="section">
+	<h1 class="topictitle1">IDoc Routing flow for the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern</h1>
+	<p class="shortdesc">
+	Details about the IDoc Routing flow, including logging and exceptions, for the 
+	Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern.
+	</p>
+	<ol>
+		<li>
+		When a message is received by the message flow, 
+		it is parsed by using the generic IDoc pass-through message set. 
+		This message set is an envelope for the real IDoc, containing a field for the IDoc type 
+		and a BLOB containing the actual IDoc, which cannot be parsed because no message set exists for it.  
+		</li>	
+		<li>
+		The message flow overrides the destination of the message based on the IDoc type.
+		</li>
+		<li>
+		The message flow copies the IDoc BLOB to the OutputRoot of the message 
+		so that only the OutputRoot, and not the generic IDoc pass-through envelope, 
+		is put to a WebSphere MQ queue.
+		</li>
+		<li>
+		The message flow might contain a subflow for logging, called Log. 
+		You can configure the pattern to include, or exclude, the Log subflow. 		 
+		</li>
+		<li>
+		The message flow also contains a subflow for error handling, called Error. 
+		
+		</li>
+	</ol>
+</div>
+<a href="overview.htm#anchor1" title="Back">Back to the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern specification</a>
+</body>
+</html>

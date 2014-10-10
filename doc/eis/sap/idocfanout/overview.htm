@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Overview of the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.eis.sap.idocfanout">
+<h1 class="topictitle1"><span>Data distribution SAP to WebSphere MQ: one-way (for IDoc)</span> pattern</h1>
+<div>
+	<p class="shortdesc">
+	You can use this pattern to process various types of IDocs that have a single program identifier without 
+	being required to redeploy or rediscover existing message sets and adapters, even when you are adding 
+	different types of IDocs.  
+	</p>
+	<p class="shortdesc">
+	Use this pattern when:
+	</p>
+	  <ul>
+	    <li>Your SAP administrator has given you a single program identifier only, 
+	    but you want to handle multiple types of IDocs</li>
+	    <li>You are adding support for a new IDoc type, but you do not want to rediscover existing IDocs 
+	    or redeploy existing message sets </li>
+	    <li>You want to do message flow development in isolation for different IDoc types</li>    
+	  </ul>
+	  
+	 
+</div>
+<div class="section">
+	<h2 class="sectiontitle">Solution</h2></div>
+	
+	<p>
+	The solution is to implement an IDoc Routing message flow that processes IDocs of all types by using 
+	the generic pass-through message set. Partial parsing allows the IDoc routing message flow to determine 
+	the IDoc type and put the IDoc, as a bit stream, on an appropriate WebSphere MQ queue. A single message 
+	flow is required for each IDoc type that gets this message and processes the IDoc as if the flow started 
+	with an SAPInput node. To implement these message flows, you must run the Adapter Connection wizard
+	for the IDoc that the message flow is going to process, then you must use the DataObject domain and set 
+	the message format to IDoc. The	adapter component that is created by the Adapter Connection wizard 
+	is not required when you are using the message set with an MQInput node. Subsequent IDoc types can be 
+	supported by creating a new message flow and a new queue. 
+	</p>
+	 <img src="idoc.gif" alt="" />
+	<p>
+	Read the following section about the design of the message flows in this pattern.</p>
+	
+	<div><a href="fanout.htm" title="Design information about the Data distribution SAP to WebSphere MQ: one-way (for IDoc) message flow.">IDoc Routing flow</a></div>
+	<div><a href="idocflows.htm" title="Design information about the message flows that process the IDoc.">IDoc processing message flows</a></div>
+	<div><a href="errorflow.htm" title="Design information about the Error subflow.">Error subflow</a></div>
+	<div><a href="logflow.htm" title="Design information about the Log subflow.">Log subflow</a></div><div>
+	
+</div>
+<div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">Related tasks</h2>
+		</div>
+		<p>
+			Read the following section for information about how to apply and use this pattern.
+		</p>
+		<a href="constraints.htm" title="Constraints on the use of the pattern">
+			Constraints on the use of the pattern</a>
+	</div>
+	<div>
+		<a href="before.htm" title="What you need to know, and what resources you must have before you can use the pattern">
+			Tasks to complete before applying the pattern</a>
+	</div>
+	
+	<div>
+		<a href="parameters.htm" title="Parameters for the pattern">
+			Parameters for the pattern</a>
+	</div>
+	<div>
+		<a href="after.htm" title="Tasks to complete after generating the pattern">
+			Tasks to complete after generating the pattern</a>
+	</div>
+</div>
+</body>
+</html>

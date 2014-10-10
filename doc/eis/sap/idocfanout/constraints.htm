@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Details about what you need to know, and what resources you must have before you can use the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Constraints on the use of the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.eis.sap.idocfanout.constraints">
+	<h1 class="topictitle1">Constraints on the use of the <span>Data distribution SAP to WebSphere MQ: 
+	one-way (for IDoc)</span> pattern</h1>
+	<div>
+		<p class="shortdesc">
+		A number of constraints apply when you use this pattern.</p>
+		<p class="shortdesc">
+		You can use the <span>Data distribution SAP to WebSphere MQ: one-way (for IDoc)</span> pattern only 
+		if you meet all of the following constraints:</p>
+		<ul>
+			<li>You are receiving IDocs from SAP by using the WebSphere Adapter for SAP, this pattern is not 
+			applicable for BAPIs.</li>
+			<li>You are using WebSphere MQ queues to communicate between the Data distribution SAP to 
+			WebSphere MQ: one-way (for IDoc) flow and the flows that are processing the IDocs. Currently 
+			only the MQInput node supports IDoc parsing.</li>
+			<li>If you choose to enable logging in the pattern, the log messages are sent to a queue. 
+			The processing of these log messages is outside the scope of this pattern and you must process 
+			the logging messages in the way that is most appropriate for your organization. When logging is 
+			selected, log messages are written to the logging queue as persistent messages, which affects 
+			performance. Persistent messages are used because it is assumed that logging is being used for 
+			audit purposes. If logging is for test or information only, logging can be switched off in 
+			production systems by configuring the user-defined property (UDP): <span class="msobjprop">LogginOn</span>.</li>
+			<li>If you choose to enable error messages in the pattern, error messages are sent to a queue 
+			when an exception occurs. Monitoring errors, and taking corrective action, is outside of the scope 
+			of the pattern, and you must process the error messages in the way most appropriate for your 
+			organization.</li>
+			<li>The pattern defines its own format for the logging and error messages and it is assumed that 
+			these are sufficient to meet the requirements in your own environment.</li>
+		</ul>
+	</div>
+	<p>
+	<a href="overview.htm#anchor1" title="Back">Back to the Data distribution SAP to WebSphere MQ: one-way (for IDoc) pattern specification</a>
+	</p>
+</body>
+</html>

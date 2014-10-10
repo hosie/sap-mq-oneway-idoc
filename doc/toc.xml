@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="../com.ibm.etools.mft.doc/toc.xml#wmb_patterns_eis" label="Application Integration" topic="eis/overview.htm">
+	<topic label="Application Integration" href="eis/overview.htm">
+    	<anchor id="wmb_patterns_eis"/>
+    	<anchor id="wmb_patterns_bpm"/>
+	</topic>
+</toc>

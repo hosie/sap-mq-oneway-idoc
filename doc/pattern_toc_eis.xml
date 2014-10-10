@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="toc.xml#wmb_patterns_eis" label="Application Integration" topic="eis/sap/overview.htm">
+    <topic label="SAP Integration" href="eis/sap/overview.htm">
+      	<topic label="MQ one-way (for IDoc)" href="eis/sap/idocfanout/overview.htm">
+      		<topic label="IDoc routing flow" href="eis/sap/idocfanout/fanout.htm"/>
+      		<topic label="IDoc processing message flows" href="eis/sap/idocfanout/idocflows.htm"/>
+      		<topic label="Error subflow" href="eis/sap/idocfanout/errorflow.htm"/>
+      		<topic label="Log subflow" href="eis/sap/idocfanout/logflow.htm"/>
+      		<topic label="Constraints" href="eis/sap/idocfanout/constraints.htm"/>
+      		<topic label="Tasks to complete before applying the pattern" href="eis/sap/idocfanout/before.htm"/>      		
+      		<topic label="Parameters" href="eis/sap/idocfanout/parameters.htm"/>
+      		<topic label="Tasks to complete after generating the pattern" href="eis/sap/idocfanout/after.htm"/>
+      	</topic>
+    </topic>
+</toc>
